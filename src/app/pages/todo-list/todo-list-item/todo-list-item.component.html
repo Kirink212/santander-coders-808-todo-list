@@ -1,0 +1,14 @@
+<mat-expansion-panel *ngIf="task">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ task.title }}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{ task.description }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <ul>
+    <li>Data de Entrega: {{ task.dueDate }}</li>
+    <li>Prioridade: {{ task.priority }}</li>
+  </ul>
+</mat-expansion-panel>
