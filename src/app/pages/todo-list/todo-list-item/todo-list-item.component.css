@@ -1,0 +1,14 @@
+.bg-red,
+.high {
+  background-color: #f56969;
+}
+
+.bg-orange,
+.medium {
+  background-color: #f5b869;
+}
+
+.bg-yellow,
+.low {
+  background-color: #f5e769;
+}

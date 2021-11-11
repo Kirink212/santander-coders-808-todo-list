@@ -4,6 +4,6 @@
     <mat-card-subtitle>Tarefas ainda não realizadas</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <pages-todo-list-item *ngFor="let task of tasksList" [task]="task"></pages-todo-list-item>
+    <pages-todo-list-item *ngFor="let task of tasksList" [taskObj]="task"></pages-todo-list-item>
   </mat-card-content>
 </mat-card>

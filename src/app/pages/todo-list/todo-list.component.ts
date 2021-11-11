@@ -19,7 +19,7 @@ export class TodoListComponent implements OnInit {
         title: "Assistir à aula do curso Santander Coders",
         description: "Devo reassistir à última aula de Angular para revisar o conteúdo.",
         dueDate: new Date(),
-        priority: TaskPriority.Low,
+        priority: TaskPriority.Medium,
         labels: [],
       },
       {

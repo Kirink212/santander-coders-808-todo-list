@@ -1,4 +1,7 @@
-<mat-expansion-panel *ngIf="task">
+<!-- <mat-expansion-panel [ngStyle]="{backgroundColor: getColor()}" *ngIf="task"> -->
+<!-- <mat-expansion-panel [ngClass]="getClass()" *ngIf="task"> -->
+<!-- <mat-expansion-panel [class]="task.priority.toLowerCase()" *ngIf="task"> -->
+<mat-expansion-panel [ngClass]="{ 'bg-red': task.priority === 'High' }" *ngIf="task">
   <mat-expansion-panel-header>
     <mat-panel-title>
       {{ task.title }}
