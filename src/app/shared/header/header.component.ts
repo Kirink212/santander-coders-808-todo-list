@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TodoListService } from './../../services/todo-list.service';
 @Component({
   selector: 'shared-header',
   templateUrl: './header.component.html',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private todoListService: TodoListService) { }
 
   ngOnInit(): void {
   }

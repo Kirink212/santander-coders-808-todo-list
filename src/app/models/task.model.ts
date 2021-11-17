@@ -10,4 +10,5 @@ export interface Task {
   dueDate: Date;
   priority: TaskPriority;
   labels: string[];
+  done: boolean;
 };

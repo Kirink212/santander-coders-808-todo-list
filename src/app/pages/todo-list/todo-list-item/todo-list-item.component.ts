@@ -1,4 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+
+import { TodoListService } from './../../../services/todo-list.service';
 
 import { Task } from './../../../models/task.model';
 
@@ -9,10 +12,16 @@ import { Task } from './../../../models/task.model';
 })
 export class TodoListItemComponent implements OnInit {
   @Input('taskObj') task?: Task;
+  @Input() taskId?: number;
+  @Output() warnTaskWasDone: EventEmitter<any> = new EventEmitter();
+  @ViewChild('checkboxInput') checkboxInput?: ElementRef;
 
-  constructor() { }
+  tasksList: Task[] = [];
+
+  constructor(private todoListService: TodoListService) { }
 
   ngOnInit(): void {
+    this.tasksList = this.todoListService.getTasks();
   }
 
   getColor(): string {
@@ -39,6 +48,11 @@ export class TodoListItemComponent implements OnInit {
       default:
         return "";
     }
+  }
+
+  markAsDone(event: MatCheckboxChange) {
+    console.log(this.checkboxInput);
+    this.warnTaskWasDone.emit({ id: this.taskId, value: event.checked });
   }
 
 }

@@ -1,17 +1,22 @@
 <!-- <mat-expansion-panel [ngStyle]="{backgroundColor: getColor()}" *ngIf="task"> -->
 <!-- <mat-expansion-panel [ngClass]="getClass()" *ngIf="task"> -->
 <!-- <mat-expansion-panel [class]="task.priority.toLowerCase()" *ngIf="task"> -->
-<mat-expansion-panel [ngClass]="{ 'bg-red': task.priority === 'High' }" *ngIf="task">
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      {{ task.title }}
-    </mat-panel-title>
-    <mat-panel-description>
-      {{ task.description }}
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-  <ul>
-    <li>Data de Entrega: {{ task.dueDate }}</li>
-    <li>Prioridade: {{ task.priority }}</li>
-  </ul>
-</mat-expansion-panel>
+<div *ngIf="task" class="item-container">
+  <mat-checkbox #checkboxInput [checked]="task.done" (change)="markAsDone($event)"></mat-checkbox>
+  <mat-expansion-panel [ngClass]="{ 'bg-red': task.priority === 'High' }" style="flex: 1; margin-left: 10px;">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ task.title }}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ task.description }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <ul>
+      <li>Data de Entrega: {{ task.dueDate }}</li>
+      <li>Prioridade: {{ task.priority }}</li>
+      <li>Feita: {{ task.done? 'Sim' : 'Não' }}</li>
+    </ul>
+    <ng-content></ng-content>
+  </mat-expansion-panel>
+</div>

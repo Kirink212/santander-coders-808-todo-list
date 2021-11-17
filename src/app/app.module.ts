@@ -20,7 +20,7 @@ import { AppComponent } from './app.component';
     SharedModule,
     PagesModule
   ],
-  providers: [],
+  // providers: [TodoListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

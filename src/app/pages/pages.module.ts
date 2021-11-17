@@ -15,6 +15,7 @@ import { TodoListItemComponent } from './todo-list/todo-list-item/todo-list-item
     CommonModule,
     MaterialModule
   ],
+  providers: [],
   exports: [
     TodoListComponent
   ]
