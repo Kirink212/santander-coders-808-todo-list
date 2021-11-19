@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { TodoListService } from './../../services/todo-list.service';
 
@@ -11,24 +12,35 @@ import { Task } from './../../models/task.model';
   providers: [TodoListService],
 })
 export class TodoListComponent implements OnInit {
-
-  tasksList: Task[] = [];
+  tasksList$?: Observable<Task[]>;
 
   constructor(private todoListService: TodoListService) {
 
   }
 
   ngOnInit(): void {
-    this.tasksList = this.todoListService.getTasks();
+    this.tasksList$ = this.todoListService.getTasks();
+
+    this.tasksList$.subscribe({
+      next: () => console.log("Acessei o dado!"),
+      error: (error) => console.log(error),
+      complete: () => console.log("Acesso finalizado!")
+    }, );
+    // const sub = getTasks$.subscribe((tasksList: Task[]) => {
+    //   this.tasksList = tasksList;
+    //   sub.unsubscribe();
+    // });
+
+    // setTimeout(() => sub.unsubscribe(), 2100);
   }
 
   markTaskAsDone(obj: {id: number; value: boolean}) {
-    const id = obj.id;
-    const done = obj.value;
+    // const id = obj.id;
+    // const done = obj.value;
 
-    console.log(this.tasksList[id].done);
-    this.tasksList[id].done = done;
-    console.log(this.tasksList[id].done);
+    // console.log(this.tasksList[id].done);
+    // this.tasksList[id].done = done;
+    // console.log(this.tasksList[id].done);
   }
 
 }

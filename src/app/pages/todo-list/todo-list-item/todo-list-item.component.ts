@@ -1,9 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
-import { TodoListService } from './../../../services/todo-list.service';
-
-import { Task } from './../../../models/task.model';
+import { Task, TaskPriority } from './../../../models/task.model';
 
 @Component({
   selector: 'pages-todo-list-item',
@@ -18,11 +16,9 @@ export class TodoListItemComponent implements OnInit {
 
   tasksList: Task[] = [];
 
-  constructor(private todoListService: TodoListService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.tasksList = this.todoListService.getTasks();
-  }
+  ngOnInit(): void {}
 
   getColor(): string {
     switch(this.task?.priority) {
