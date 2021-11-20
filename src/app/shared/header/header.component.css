@@ -1,0 +1,11 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.white-border {
+  border: 2px solid white;
+}
+
+.mouse-pointer {
+  cursor: pointer;
+}

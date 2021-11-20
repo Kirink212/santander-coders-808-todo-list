@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 
 import { TodoListService } from './../../services/todo-list.service';
 
@@ -11,8 +11,9 @@ import { Task } from './../../models/task.model';
   styleUrls: ['./todo-list.component.css'],
   providers: [TodoListService],
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent implements OnInit, OnDestroy {
   tasksList$?: Observable<Task[]>;
+  sub?: Subscription;
 
   constructor(private todoListService: TodoListService) {
 
@@ -21,14 +22,13 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
     this.tasksList$ = this.todoListService.getTasks();
 
-    this.tasksList$.subscribe({
+    this.tasksList$?.subscribe({
       next: () => console.log("Acessei o dado!"),
       error: (error) => console.log(error),
       complete: () => console.log("Acesso finalizado!")
     }, );
-    // const sub = getTasks$.subscribe((tasksList: Task[]) => {
+    // this.sub = this.todoListService.getTasks().subscribe((tasksList: Task[]) => {
     //   this.tasksList = tasksList;
-    //   sub.unsubscribe();
     // });
 
     // setTimeout(() => sub.unsubscribe(), 2100);
@@ -43,4 +43,7 @@ export class TodoListComponent implements OnInit {
     // console.log(this.tasksList[id].done);
   }
 
+  ngOnDestroy() {
+    // this.sub?.unsubscribe();
+  }
 }
