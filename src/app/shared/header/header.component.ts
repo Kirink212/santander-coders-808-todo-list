@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
-    this.loginService.mostrarMenu.subscribe(mostrar => this.renderizar = mostrar)
+    this.loginService.mostrarMenu.subscribe(mostrar => this.renderizar = mostrar);
   }
 
 }

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 export class LoginService {
   authenticated: boolean = false;
 
-  mostrarMenu: EventEmitter<boolean> = new EventEmitter<boolean>()
+  mostrarMenu: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private router: Router) { }
 
