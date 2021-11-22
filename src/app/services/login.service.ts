@@ -18,4 +18,14 @@ export class LoginService {
 
     if (this.authenticated) this.router.navigate(['']);
   }
+
+  logoutUser() {
+    this.authenticated = false;
+    this.mostrarMenu.emit(this.authenticated);
+    this.router.navigate(['login']);
+  }
+
+  userIsLoggedIn(): boolean {
+    return this.authenticated;
+  }
 }
